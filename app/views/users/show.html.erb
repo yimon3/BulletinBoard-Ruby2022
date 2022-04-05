@@ -1,0 +1,20 @@
+<div class="container">
+<br>
+<h3>User Detail</h3>
+
+<p>
+   <strong>Name: </strong> <%= @user.name %><br />
+   <strong>Type :</strong> <%= @user.userType %><br />
+   <strong>Email:</strong> <%= @user.email %><br />
+   <strong>Phone:</strong> <%= @user.phone %><br />
+   <strong>Date of Birth:</strong> <%= @user.dob %><br />
+   <strong>Address:</strong> <%= @user.address %><br />
+   <strong>Created Date:</strong> <%= @user.created_at.strftime('%Y-%m-%d') %><br />
+   <strong>Created User:</strong> <%= @user.name %><br />
+   <strong>Updated Date:</strong> <%= @user.updated_at.strftime('%Y-%m-%d') %><br />
+   <strong>Updated User:</strong> <%= @user.name %><br />
+</p>
+<hr />
+
+<%= link_to 'Back', {:action => 'index'} %>
+</div>

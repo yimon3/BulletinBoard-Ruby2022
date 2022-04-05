@@ -1,0 +1,19 @@
+<h1>Confirm Post</h1>
+<%= form_for @post, :url =>{:action => "create"} do %>
+<div class="container">
+<div class="form-group">
+    <label for="name">Title</label>
+    <%= text_field 'post', 'title', class:'form-control' %>
+  </div>
+  <div class="form-group">
+    <label for="name">Description</label>
+    <%= text_field 'post', 'description', class:'form-control' %>
+  </div>
+  <%= hidden_field 'post', 'created_user_id'%>
+  <%= hidden_field 'post', 'updated_user_id'%>
+  <div class="form-group">
+   <%= submit_tag "Create", class:'btn btn-primary' %>
+   <input type="reset" class="btn btn-secondary" name="Clear" value="Clear">
+  </div>
+</div>
+<% end %>

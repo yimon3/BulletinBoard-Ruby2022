@@ -1,0 +1,17 @@
+<div class="container">
+<br>
+<h3>Post Detail</h3>
+
+<p>
+   <strong>Title: </strong> <%= @post.title %><br />
+   <strong>Description :</strong> <%= @post.description %><br />
+   <strong>Status:</strong> <%= @post.status %><br />
+   <strong>Created Date:</strong> <%= @post.created_at.strftime('%Y-%m-%d') %><br />
+   <strong>Created User:</strong> <%= @post.user.name %><br />
+   <strong>Updated Date:</strong> <%= @post.created_at.strftime('%Y-%m-%d') %><br />
+   <strong>Updated User:</strong> <%= @post.user.name %><br />
+</p>
+<hr />
+
+<%= link_to 'Back', {:action => 'index'} %>
+</div>

@@ -1,0 +1,21 @@
+<div class="container">
+<br>
+<h3>Profile</h3>
+
+<p>
+   <strong>Name: </strong> <%= @user.name %><br />
+   <strong>Type :</strong>
+   <% if @user.userType == 'a' %>
+   <%= 'Admin' %>
+   <% else %>
+   <%= 'User' %>
+   <% end %><br />
+   <strong>Email:</strong> <%= @user.email %><br />
+   <strong>Phone:</strong> <%= @user.phone %><br />
+   <strong>Date of Birth:</strong> <%= @user.dob %><br />
+   <strong>Address:</strong> <%= @user.address %><br />
+</p>
+<hr />
+<%= link_to 'Edit Profile', {:action => 'editProfile', :id => session[:user_id]}, class: 'btn btn-primary' %>
+<%= link_to 'Back', {:action => 'index'} %>
+</div>

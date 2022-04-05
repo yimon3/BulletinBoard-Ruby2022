@@ -1,0 +1,21 @@
+<h1>Edit Post</h1>
+
+<div class="container">
+<%= form_for @post, :url => {:action => "editConfirm", :id => @post} do |form| %>
+<div class="container">
+<div class="form-group">
+    <label for="name">Title</label>
+    <%= hidden_field 'post', 'id', class:'form-control' %>
+    <%= text_field 'post', 'title', class:'form-control' %>
+  </div>
+  <div class="form-group">
+    <label for="name">Description</label>
+    <%= text_field 'post', 'description', class:'form-control' %>
+  </div><br>
+  <div class="form-group">
+   <%= submit_tag "Edit", class:'btn btn-primary' %>
+   <input type="reset" class="btn btn-secondary" name="Clear" value="Clear">
+  </div>
+</div>
+<% end %>
+</div>

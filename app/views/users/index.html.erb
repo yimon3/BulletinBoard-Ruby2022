@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <h6 class="mt-4 display-4">Listing Users</h6>
+  </div><br>
+  <div style="float:right">
+  <label>Name:</label>
+<%= text_field_tag :search, params[:search], placeholder: "" %>
+ <label>Email:</label>
+<%= text_field_tag :search, params[:search], placeholder: "" %>
+ <label>From:</label>
+<%= text_field_tag :search, params[:search], placeholder: "" %>
+ <label>To:</label>
+<%= text_field_tag :search, params[:search], placeholder: "" %>
+<%= button_tag 'Search',  class: 'btn btn-primary'  %>
+</div><br><br>
+<table class=" table table-striped" data-sort-name="name" data-sort-order="desc">
+<thead>
+  <tr>
+    <th data-field="name" data-sortable="true">Name</th>
+    <th data-field="email" data-sortable="true">Email</th>
+    <th data-field="createdUser" data-sortable="true">Created User</th>
+    <th data-field="type" data-sortable="true">Type</th>
+    <th data-field="phone" data-sortable="true">Phone</th>
+    <th data-field="dob" data-sortable="true">Date of Birth</th>
+    <th data-field="address" data-sortable="true">Address</th>
+    <th data-field="created_at" data-sortable="true">Created Date</th>
+    <th data-field="updated_at" data-sortable="true">Updated Date</th>
+    <th data-field="operation" data-sortable="true">Operation</th>
+  </tr>
+</thead>
+  <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= link_to user.name, {:action => 'show', :id => user.id} -%></td>
+              <td><%= user.email %></td> 
+              <td><%= user.name %></td> 
+              <td><%= user.userType %></td>
+              <td><%= user.phone %></td>
+              <td><%= user.dob %></td>
+              <td><%= user.address %></td>
+              <td><%= user.created_at.strftime('%Y-%m-%d') %></td>
+              <td><%= user.updated_at.strftime('%Y-%m-%d') %></td>
+              <td> <%= link_to "Delete", user_path(user.id), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure want to delete?"
+                  }, class:"btn btn-danger"  %></td>
+            </tr>
+          <% end %>
+        </tbody>
+</table>
+ <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
+</div>

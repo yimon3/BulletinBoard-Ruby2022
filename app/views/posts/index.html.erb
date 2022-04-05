@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <h4 class="mt-4 display-4">Listing Posts</h4>
+  </div>
+  <div style="float:right">
+<%= form_tag(posts_path, method:'get') do %>
+<%= text_field_tag :search, params[:search], placeholder: "Enter title or description" %>
+<%= submit_tag 'Search',  class: 'btn btn-primary'  %>
+<% end %>
+<%= link_to 'Create', new_post_path, class: 'btn btn-primary' %>
+<%= link_to 'Download', posts_export_path(format: :xlsx),class: 'btn btn-primary'%>
+</div><br><br>
+ 
+ 
+<table class=" table table-striped" data-sort-name="name" data-sort-order="desc">
+<thead>
+  <tr>
+    <th data-field="title" data-sortable="true">Post Title</th>
+    <th data-field="description" data-sortable="true">Post Description</th>
+    <th data-field="user" data-sortable="true">Posted User</th>
+    <th data-field="date" data-sortable="true">Posted Date</th>
+    <th data-field="operation" data-sortable="true">Operation</th>
+  </tr>
+</thead>
+  <tbody>
+          <% @post.each do |post| %>
+            <tr>
+              <td><%= link_to post.title, {:action => 'show', :id => post.id} -%></td>
+              <td><%= post.description %></td> 
+              <td><%= post.user.name %></td> 
+              <td><%= post.created_at.strftime('%Y-%m-%d') %></td> 
+              <td>
+               <%= link_to 'Edit', edit_post_path(post.id), class:"btn btn-success" %>
+               <%= link_to "Delete", post_path(post.id), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure want to delete?"
+                  }, class:"btn btn-danger"  %>
+              </td>          
+            </tr>
+          <% end %>
+        </tbody>
+      
+</table>
+  <%= will_paginate @post, renderer: BootstrapPagination::Rails %>
+</div>
