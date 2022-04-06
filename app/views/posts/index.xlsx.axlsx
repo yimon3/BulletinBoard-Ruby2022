@@ -4,7 +4,7 @@ wb.add_worksheet(name: "Posts") do |sheet|
   # Create the header row
   sheet.add_row ["Title", "Description"]
   # Create entries for each item
-  @posts.each do |post|
+  @post.each do |post|
     sheet.add_row [post.title, post.description]
   end
 end

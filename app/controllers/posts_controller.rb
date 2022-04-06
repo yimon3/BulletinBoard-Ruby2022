@@ -91,14 +91,9 @@ end
   end
 
   def export
-    @posts = Post.all
     respond_to do |format|
-      format.xlsx {
-        response.headers[
-          'Content-Disposition'
-        ] = "attachment; filename='posts.xlsx'"
-      }
-      format.html { render :index }
+      format.html
+      format.xlsx { response.headers['Content-Disposition'] = 'attachment; filename="Posts.xlsx"' }
     end
   end
 

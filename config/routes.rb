@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get 'posts/destroy' => 'posts#destroy'
 	post 'posts/destroy' => 'posts#destroy'
   post 'posts/import' => 'posts#import'
-  get 'posts/export' => 'posts#export'
+  get 'posts/export' => 'posts#index'
 
   get 'users/profile'
   get 'users/editProfile'

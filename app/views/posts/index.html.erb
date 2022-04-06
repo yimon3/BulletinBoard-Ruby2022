@@ -7,7 +7,7 @@
       <%= text_field_tag :search, params[:search], placeholder: "Enter title or description" %>&nbsp;
 <%= submit_tag 'Search',  class: 'btn btn-primary'  %>&nbsp;
       <%= link_to 'Create', new_post_path, class: 'btn btn-info' %>
-<%= link_to 'Download', posts_export_path(format: :xls),class: 'btn btn-success'%>
+ <%= link_to 'Download',  posts_path(format: "xlsx"),  :class => "btn btn-success" %>&nbsp;
     <% end %>
   </div>
  <div style="position: relative; top: -34px; left: 950px;">
