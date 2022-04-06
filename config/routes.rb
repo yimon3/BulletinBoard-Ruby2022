@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post 'posts/search'
 	patch 'posts/editConfirm' => 'posts#editConfirm'
   post 'posts/editConfirm'
+  get 'posts/edit'
   get 'posts/update'
   post 'posts/update'
   get 'posts/destroy' => 'posts#destroy'
@@ -28,6 +29,7 @@ Rails.application.routes.draw do
   post 'sessions/authenticate'
   get 'sessions/signup'
 	get 'sessions/destroy'  
+  post 'sessions/create' 
 
   root 'sessions#new'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

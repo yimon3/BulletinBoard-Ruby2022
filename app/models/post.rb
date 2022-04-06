@@ -1,6 +1,8 @@
 class Post < ApplicationRecord
   belongs_to :user , optional: true
-
+  validates :title, presence: true, uniqueness: { case_sensitive: false }, length: { maximum: 25 }, format: { with: /\A[a-zA-Z ]+\z/, message: "Only allow letters"}
+  validates :description, length: { maximum: 255 }, format: { with: /\A[a-zA-Z ]+\z/, message: "Only allow letters"}
+  
   require 'csv'
   require 'open-uri'
     def self.import_CSV(file, id)

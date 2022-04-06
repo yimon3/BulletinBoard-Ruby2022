@@ -13,7 +13,7 @@
   <%= hidden_field 'post', 'updated_user_id'%>
   <div class="form-group">
    <%= submit_tag "Create", class:'btn btn-primary' %>
-   <input type="reset" class="btn btn-secondary" name="Clear" value="Clear">
+   <%= link_to "Cancel", { :action => "new", :option => 'back'}, :class => "btn btn-secondary"  %>
   </div>
 </div>
 <% end %>

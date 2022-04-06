@@ -10,11 +10,17 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    if params[:option].blank?
+      @post = Post.new
+    else
+      @post = Post.new(session[:post])
+      session.delete(:post)
+    end
   end
 
   def confirm
     @post = Post.new(post_params)
+    session[:post] = post_params
     render 'confirmPost'
   end
 
@@ -24,9 +30,6 @@ class PostsController < ApplicationController
     @post.status = 1
     @post.created_user_id = session[:user_id]
     @post.updated_user_id = session[:user_id]
-    if title_matches(@post.title) 
-      redirect_to new_post_path, notice: "Title cannot be duplicated."
-    else 
       if @post.save
         flash[:notice] = "Post created successfully!"
         redirect_to posts_path
@@ -34,18 +37,21 @@ class PostsController < ApplicationController
         flash.now.alert = "Oops, couldn't create post. "
         render :new
       end
-    end
   end
 
   def edit
-    @post = Post.find(params[:id])
+    if params[:option].blank?
+      @post = Post.find(params[:id])
+    else
+      @post = Post.new(session[:post])
+      session.delete(:post)
+    end
  end
 
  def editConfirm
   @post = Post.new(post_params)
   @post.id = params[:id] 
-    puts @post.id
-    puts @post.title
+  session[:post] = post_params
 end
 
  def update
@@ -68,7 +74,7 @@ end
   def search
     if params[:search]
       @post = Post.where("#{'title'} LIKE ?" , "%#{params[:search]}")
-      redirect_to posts_path, notice: "Search."
+      redirect_to posts_path
     else
       @post = Post.all
     end

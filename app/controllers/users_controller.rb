@@ -26,7 +26,12 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
+    if params[:option].blank?
+      @user = User.new
+    else
+      @user = User.new(session[:user])
+      session.delete(:user)
+    end
   end
 
   def registerConfirm
@@ -36,6 +41,7 @@ class UsersController < ApplicationController
     else
       @user.userType = 'User'
     end
+    session[:user] = user_params
     render 'confirmRegister'
   end
 

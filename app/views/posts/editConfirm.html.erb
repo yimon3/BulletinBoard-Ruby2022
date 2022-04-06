@@ -14,6 +14,7 @@
       </div><br>
       <div class="form-group">
         <%= form.submit "Confirm", :class => "btn btn-primary" %>
+        <%= link_to "Cancel", { :action => "edit", :option => 'back'}, :class => "btn btn-secondary"  %>
     <% end %>
   </div>
 </div>

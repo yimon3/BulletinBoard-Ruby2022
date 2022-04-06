@@ -39,7 +39,7 @@
   </div><br>
   <div class="col-sm-10">
     <%= submit_tag "Confirm", class:'btn btn-primary' %>
-    <input type="reset" class="btn btn-secondary" name="Clear" value="Clear">
+     <%= link_to "Cancel", { :action => "new", :option => 'back'}, :class => "btn btn-secondary"  %>
     </div>
   </div>
 <% end %>
