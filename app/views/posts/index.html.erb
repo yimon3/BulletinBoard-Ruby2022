@@ -2,15 +2,20 @@
   <div class="row justify-content-center">
     <h4 class="mt-4 display-4">Listing Posts</h4>
   </div>
-  <div style="float:right">
-<%= form_tag(posts_path, method:'get') do %>
-<%= text_field_tag :search, params[:search], placeholder: "Enter title or description" %>
-<%= submit_tag 'Search',  class: 'btn btn-primary'  %>
-<% end %>
-<%= link_to 'Create', new_post_path, class: 'btn btn-primary' %>
-<%= link_to 'Download', posts_export_path(format: :xlsx),class: 'btn btn-primary'%>
-</div><br><br>
- 
+  <div>
+   <%= form_tag(posts_path, method: :get) do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Enter title or description" %>&nbsp;
+<%= submit_tag 'Search',  class: 'btn btn-primary'  %>&nbsp;
+      <%= link_to 'Create', new_post_path, class: 'btn btn-info' %>
+<%= link_to 'Download', posts_export_path(format: :xls),class: 'btn btn-success'%>
+    <% end %>
+  </div>
+ <div style="position: relative; top: -34px; left: 950px;">
+    <%= form_tag({:action => 'import'}, :multipart => true) do %>
+      <%= submit_tag "Import CSV", :class => "btn btn-warning" %>&nbsp;
+      <%= file_field_tag :file, :class => "file_display" %>
+    <% end %>
+  </div>
  
 <table class=" table table-striped" data-sort-name="name" data-sort-order="desc">
 <thead>

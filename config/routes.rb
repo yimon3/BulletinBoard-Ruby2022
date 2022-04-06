@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   post 'posts/update'
   get 'posts/destroy' => 'posts#destroy'
 	post 'posts/destroy' => 'posts#destroy'
-  post 'posts/import'
+  post 'posts/import' => 'posts#import'
   get 'posts/export' => 'posts#export'
 
   get 'users/profile'

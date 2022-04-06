@@ -6,17 +6,9 @@ ruby "3.0.3"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.2", ">= 7.0.2.3"
 
-gem 'rubyzip', '>= 1.2.1'
-gem 'axlsx', git: 'https://github.com/randym/axlsx.git', ref: 'c8ac844'
-gem 'axlsx_rails'
-
 gem 'bcrypt', '~> 3.1.7'
 
-gem 'bootstrap-sass', '~> 3.3.5'
-
 gem "byebug"
-
-gem 'will_paginate-bootstrap'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -84,3 +76,11 @@ group :test do
 end
 
 gem "will_paginate", "~> 3.3"
+gem 'will_paginate-bootstrap'
+
+gem 'axlsx_rails'
+
+gem 'jquery-rails'
+gem 'momentjs-rails'
+gem 'bootstrap-sass'
+gem 'sass-rails'
